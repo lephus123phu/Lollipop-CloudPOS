@@ -13,6 +13,7 @@ class NavigationBarLeftPage extends GetView<CloudPosController>{
     return Container(
         height: 60.0,
         child: ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           children: new List.generate(allMenuBottomLeft.length, (int index) {
             return buildMenuButtonLeft(context ,allMenuBottomLeft[index]);

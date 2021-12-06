@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lollipop/app/cloudPosStore/cloud_pos_database.dart';
+import 'package:lollipop/app/cloudPosStore/database_js.dart';
+import 'package:lollipop/app/cloudPosStore/moor_database.dart';
 import 'package:lollipop/app/modules/CloudPos/providers/cloud_pos_provider.dart';
 import 'package:lollipop/app/utils/validate_response_db.dart';
 import 'package:platform_device_id/platform_device_id.dart';
 
 class CloudPosController extends GetxController {
-  late CloudPosDatabase _cloudPosDatabase;
   TextEditingController textEditingController = new TextEditingController();
   TextEditingController textEditingQuantity = new TextEditingController();
   TextEditingController textEditingDiscount1 = new TextEditingController();
@@ -38,10 +38,8 @@ class CloudPosController extends GetxController {
   @override
   void onReady() async{
     List sql = await GetSqlCreateDatabase();
-    _cloudPosDatabase = new CloudPosDatabase(sql);
-    await _cloudPosDatabase.initializeDatabase();
-    //await _cloudPosDatabase.insertTestMergeDelete();
-    await _cloudPosDatabase.getMergeDelete();
+    print(sql[0]);
+    alert();
     super.onReady();
   }
 
